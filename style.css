@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    user-select: none;
+}
+.search-container{
+    width: 50px;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    box-shadow: 0 4px 8px rgb(0,0,0,.3);
+    border-radius: .5rem;
+    position: relative;
+    font-size: 1.3rem;
+    overflow: hidden;
+    transition: .2s ease;
+}
+.search-container.active{
+    width: 400px;
+}
+.search-container.active .lefticondiv{
+    width: 50px;
+    height: 50px;
+    position: unset;
+}
+.lefticondiv{
+    background: #333;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+input{
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-left: 1px solid;
+    padding: 1rem;
+    flex: 1;
+    transform: translateX(-100%);
+}
+.search-container.active input{
+    animation: showinput .5s .5s forwards ease;
+}
+@keyframes showinput {
+    100%{
+    transform: translateX(0%);
+    }
+}
+.righticondiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem;
+}
+ion-icon{
+    cursor: pointer;
+}
+.righticondiv ion-icon{
+    transform: scale(0);
+}
+.search-container.active .righticondiv ion-icon{
+    animation: scale .1s .2s forwards ease;
+    animation-delay: calc(var(--i)*.5s);
+}
+@keyframes scale {
+    100%{
+        transform: scale(1);
+    }
+}
